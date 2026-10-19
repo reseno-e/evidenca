@@ -1037,7 +1037,7 @@
         if (!r.ok) throw new Error('Datoteke ' + u + ' ni bilo mogoče naložiti.');
         return r.arrayBuffer();
       });
-      pdfAssets = Promise.all([get('pisave/Roboto-Regular.ttf'), get('pisave/Roboto-Bold.ttf'), get('slike/logo-pdf.jpg')])
+      pdfAssets = Promise.all([get('Roboto-Regular.ttf'), get('Roboto-Bold.ttf'), get('logo-pdf.jpg')])
         .then(([regular, bold, logo]) => ({
           fonts: { regular: new PDF.TtfFont(regular, 'Roboto-Regular'), bold: new PDF.TtfFont(bold, 'Roboto-Bold') },
           logo,
@@ -1252,7 +1252,7 @@
     return html`<header class="app-header">
       ${back
         ? html`<button class="hdr-back" onClick=${back} aria-label="Nazaj"><${Icon} name="chevron_left" size=${26} /><span>Nazaj</span></button>`
-        : html`<img class="hdr-logo" src="slike/logo-header.png" alt="Rešeno – rešitve energetske oskrbe" />`}
+        : html`<img class="hdr-logo" src="logo-header.png" alt="Rešeno – rešitve energetske oskrbe" />`}
       <div class=${'hdr-title' + (back ? ' hdr-title-sub' : '')}>${title}</div>
       ${actions ? html`<div class="hdr-actions">${actions}</div>` : null}
     </header>`;
@@ -2099,7 +2099,7 @@
         <//>
 
         <section class="about">
-          <div class="about-head"><img src="slike/logo-header.png" alt="" /><span>Rešeno Evidenca · spletna različica ${APP_VERSION}</span></div>
+          <div class="about-head"><img src="logo-header.png" alt="" /><span>Rešeno Evidenca · spletna različica ${APP_VERSION}</span></div>
           <p>Podatki so shranjeni na tej napravi. Če je nastavljena povezava z vodjo, se vnosi pošiljajo tudi v preglednico podjetja (Google Preglednice).
             Trenutna lokacija se uporabi samo, ko tapneš gumb za lokacijo; naslov poišče OpenStreetMap.</p>
           <p>Podatki o naslovih © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">sodelavci OpenStreetMap</a>.
@@ -2145,7 +2145,7 @@
     }
 
     return html`<div class="welcome">
-      <img class="welcome-logo" src="slike/logo-full.png" alt="Rešeno – rešitve energetske oskrbe" />
+      <img class="welcome-logo" src="logo-full.png" alt="Rešeno – rešitve energetske oskrbe" />
       <h1>Dobrodošli! 👋</h1>
       <p class="welcome-text">${SettingsTexts.welcomeText(app.settings.morningMinutes)}</p>
       <input class="input big" type="text" value=${name} placeholder="npr. Janez Novak" autocomplete="name" autocapitalize="words" spellcheck=${false}
@@ -2169,7 +2169,7 @@
     const safari = /Safari/.test(ua) && !/CriOS|FxiOS|EdgiOS|OPiOS|GSA\//.test(ua);
     const oldIos = !iosAtLeast(16, 4);
     return html`<div class="install">
-      <img class="welcome-logo" src="slike/logo-full.png" alt="Rešeno – rešitve energetske oskrbe" />
+      <img class="welcome-logo" src="logo-full.png" alt="Rešeno – rešitve energetske oskrbe" />
       <h1>Namesti aplikacijo na začetni zaslon</h1>
       <p class="welcome-text">Rešeno Evidenca deluje kot aplikacija na iPhonu – brez App Stora. Namestitev traja 10 sekund:</p>
       <ol class="steps">
@@ -2346,7 +2346,7 @@
     try {
       await loadAll();
     } catch (e) {
-      render(html`<div class="fatal"><img src="slike/logo-header.png" alt="Rešeno" />
+      render(html`<div class="fatal"><img src="logo-header.png" alt="Rešeno" />
         <h1>Shramba ni na voljo</h1>
         <p>Aplikacija ne more shraniti podatkov na to napravo (${errorText(e)}). Če uporabljaš zasebno brskanje, ga izklopi in poskusi znova.</p></div>`, root);
       return;

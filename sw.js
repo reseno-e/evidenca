@@ -8,7 +8,7 @@
  */
 importScripts('core.js', 'db.js');
 
-const VERSION = '1.0.0';
+const VERSION = '1.0.1';
 const CACHE = 'evidenca-' + VERSION;
 const ASSETS = [
   './',
@@ -18,18 +18,18 @@ const ASSETS = [
   'core.js',
   'db.js',
   'pdf.js',
-  'lib/preact.js',
+  'preact.js',
   'manifest.webmanifest',
-  'slike/logo-header.png',
-  'slike/logo-full.png',
-  'slike/logo-pdf.jpg',
-  'pisave/Roboto-Regular.ttf',
-  'pisave/Roboto-Bold.ttf',
-  'ikone/apple-touch-icon.png',
-  'ikone/ikona-192.png',
-  'ikone/ikona-512.png',
-  'ikone/znacka-96.png',
-  'ikone/favicon-32.png',
+  'logo-header.png',
+  'logo-full.png',
+  'logo-pdf.jpg',
+  'Roboto-Regular.ttf',
+  'Roboto-Bold.ttf',
+  'apple-touch-icon.png',
+  'ikona-192.png',
+  'ikona-512.png',
+  'znacka-96.png',
+  'favicon-32.png',
 ];
 
 const Core = self.EvidencaCore;
@@ -104,8 +104,8 @@ async function showReminder() {
     body: text.body,
     tag: text.tag,
     renotify: true,
-    icon: 'ikone/ikona-192.png',
-    badge: 'ikone/znacka-96.png',
+    icon: 'ikona-192.png',
+    badge: 'znacka-96.png',
     lang: 'sl',
     timestamp: Date.now(),
     data: { day },
@@ -119,7 +119,7 @@ self.addEventListener('push', (event) => {
   event.waitUntil(showReminder().catch(() => self.registration.showNotification('Rešeno Evidenca', {
     body: 'Ne pozabi zabeležiti delovnega časa.',
     tag: 'jutro',
-    icon: 'ikone/ikona-192.png',
+    icon: 'ikona-192.png',
   })));
 });
 

@@ -35,12 +35,16 @@ Za objavo in posodobitev skripte uporabi računalnik.
    aplikacija – brez podatkov, imen in brez povezave do preglednice (povezavo vsak zaposleni prilepi
    v aplikacijo na svojem telefonu).
 3. Na strani novega repozitorija klikni **uploading an existing file** (ali **Add file → Upload files**).
-   Razširi `Reseno-Evidenca-splet.zip` in v okno povleci **vse datoteke in mape iz razširjene mape**
-   (ne mape same) – datoteka `index.html` mora biti na prvi ravni. Spodaj klikni **Commit changes**.
+   Razširi `Reseno-Evidenca-splet.zip`, odpri razširjeno mapo, označi **vse datoteke** (Ctrl+A) in jih
+   povleci v okno (ali jih izberi s *choose your files*). Aplikacija nima podmap, zato morajo biti vse
+   datoteke na prvi ravni repozitorija. Spodaj klikni **Commit changes**.
 4. **Settings → Pages** (levo). Pri *Build and deployment* izberi *Source:* **Deploy from a branch**,
    *Branch:* **main** in **/ (root)** → **Save**.
-5. Po 1–2 minutah se na isti strani prikaže naslov, npr. `https://reseno.github.io/evidenca/`.
-   Odpri ga na računalniku – prikazati se mora pozdravni zaslon aplikacije.
+5. Naslov aplikacije je `https://<ime-računa>.github.io/<ime-repozitorija>/`, npr. za račun `reseno-e`
+   in repozitorij `evidenca`: `https://reseno-e.github.io/evidenca/`. Objava traja 1–2 minuti; potek
+   vidiš v zavihku **Actions** (»pages build and deployment« z zeleno kljukico). Ko je objavljeno, se
+   po osvežitvi strani **Settings → Pages** zgoraj prikaže tudi okvir *Your site is live at …*.
+   Naslov odpri na računalniku – prikazati se mora pozdravni zaslon aplikacije (ne samo »Nalagam …«).
 6. Ta naslov pošlji zaposlenim (skupaj s povezavo za zaposlene iz celice B8). Naslov aplikacije ni
    skriven; skrivna je samo povezava s kodo.
 
@@ -107,13 +111,15 @@ bolniška ali prosto. Opomnik za odhod pride, če je prihod zabeležen, odhod pa
 
 1. V repozitoriju na GitHubu naloži spremenjene datoteke (**Add file → Upload files**; obstoječe se
    zamenjajo).
-2. V datoteki `sw.js` povečaj številko `VERSION` (npr. `1.0.1`), sicer telefoni nove različice ne
+2. V datoteki `sw.js` povečaj številko `VERSION` (npr. `1.0.2`), sicer telefoni nove različice ne
    prenesejo.
 3. Ob naslednjem odprtju aplikacije se na vrhu prikaže **Na voljo je nova različica → Osveži**.
    Podatki na telefonih ostanejo.
 
 ## 7. Pogoste težave
 
+- **Aplikacija ostane na »Nalagam …«** – v repozitoriju manjka katera od datotek (npr. `preact.js`) ali
+  je v podmapi. Na zavihku **Code** morajo biti vse datoteke na prvi ravni.
 - **»Preglednica vodje še ne pošilja opomnikov«** – skripta ni posodobljena (poglavje 3).
 - **Obvestila ne pridejo** – preveri: iOS 16.4 ali novejši; aplikacija je odprta z začetnega zaslona;
   *Nastavitve → Obvestila → Evidenca → Dovoli obvestila*; način Fokus/Ne moti; v aplikaciji
@@ -130,14 +136,15 @@ bolniška ali prosto. Opomnik za odhod pride, če je prihod zabeležen, odhod pa
 ## 8. Za razvijalce
 
 ```
-splet/                     vse datoteke, ki se objavijo (GitHub Pages)
+splet/                     vse datoteke, ki se objavijo (GitHub Pages) – brez podmap
   index.html, app.css      stran in videz (barve logotipa)
   app.js                   zasloni (Preact + htm), shramba, pošiljanje vodji, opomniki, lokacija, poročila
   core.js                  logika, enaka kot v Kotlinu: izračun ur, prazniki, povzetki, CSV, besedila, postavitev PDF
   pdf.js                   zapisovalnik PDF (vdelan podnabor pisave Roboto, logotip JPEG)
   db.js                    IndexedDB (uporabljata ga stran in service worker)
   sw.js                    delovanje brez interneta, prikaz obvestil, posodobitve (VERSION)
-  manifest.webmanifest, ikone/, slike/, pisave/, lib/ (Preact 10.27.2, htm 3.1.1)
+  preact.js                Preact 10.27.2 in htm 3.1.1 (licenci LICENSE-preact.txt, LICENSE-htm.txt)
+  manifest.webmanifest, ikone (*.png), logotipi (logo-*.png, logo-pdf.jpg), pisava Roboto (*.ttf, Apache 2.0)
 splet-test/                preizkusi (se ne objavijo)
   core.test.js, pdf.test.js   node --test splet-test/core.test.js splet-test/pdf.test.js
   e2e/run.js                  celovit preizkus v Chromiumu (Playwright) s pravo skripto Koda.gs
