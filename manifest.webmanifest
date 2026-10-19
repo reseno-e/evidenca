@@ -1,0 +1,20 @@
+{
+  "id": "./",
+  "name": "Rešeno Evidenca",
+  "short_name": "Evidenca",
+  "description": "Evidenca delovnega časa za zaposlene podjetja Rešeno – rešitve energetske oskrbe.",
+  "lang": "sl",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F2F5F9",
+  "theme_color": "#FFFFFF",
+  "categories": ["business", "productivity"],
+  "icons": [
+    { "src": "ikone/ikona-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "ikone/ikona-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "ikone/ikona-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
